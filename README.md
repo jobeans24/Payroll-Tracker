@@ -27,3 +27,14 @@ SO THAT I can see my employees' payroll data and properly budget for the company
 
 ## Description
 
+The code will allow a user to fill in the employees information and allow them to organize the data based on the last name. Creating a list that allows the user to see their employees on payroll and log their salaries.
+
+## Images
+
+Here are the four files in the images folder:
+
+1. ![File 1](/assets/images/image.png)
+2. ![File 2](/assets/images/image-1.png)
+3. ![File 3](/assets/images/image-2.png)
+4. ![File 4](/assets/images/image-3.png)
+5. ![File 5](/assets/images/) 
