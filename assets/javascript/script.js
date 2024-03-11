@@ -1,9 +1,10 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
+let employeesArray = [];
+let length = 0;
 // Collect employee data
 const collectEmployees = function() {
-    const employees = []; // Create an empty array to store employee objects
     let addEmployee = true; // Create a variable to control the loop
     while (addEmployee) { // Loop through the prompts until the user chooses to stop
       const firstName = prompt("Enter the employee's first name:"); // Prompt the user for the employee's first name
@@ -12,9 +13,9 @@ const collectEmployees = function() {
       const employee = { // Create an object to store the employee data
         firstName: firstName, 
         lastName: lastName, 
-        salary: salary
+        salary: salary 
       };
-      employees.push(employee); // Add the employee object to the employees array
+        employeesArray.push(employee); // Add the employee object to the array
       addEmployee = confirm("Would you like to add another employee?"); // Ask the user if they want to add another employee
     }
 }
@@ -23,9 +24,10 @@ const collectEmployees = function() {
 const displayAverageSalary = function(employeesArray) {
  
     let totalSalary = 0; // Create a variable to store the total salary
-    for (let i = 0; i < employeesArray.length; i++) { // Loop through the employeesArray
-      totalSalary += employeesArray[i].salary; // Add each employee's salary to the total
+    for (let i = 0; i < employeesArray.length; i++) { // Loop through the employees
+        totalSalary += employeesArray[i].salary; // Add each employee's salary to the total
     }
+
     const averageSalary = totalSalary / employeesArray.length; // Calculate the average salary
     console.log("Average Salary: " + averageSalary.toLocaleString("en-US", { // Log the average salary
       style: "currency", // Format the average salary as currency
@@ -82,23 +84,21 @@ const displayEmployees = function(employeesArray) {
 const trackEmployeeData = function() {
   const employees = collectEmployees();
 
-  console.table(employees);
 
-  displayAverageSalary(employees);
+console.table(employees);
 
-  console.log('==============================');
 
-  getRandomEmployee(employees);
 
-  employees.sort(function(a,b) {
-    if (a.lastName < b.lastName) {
-      return -1;
-    } else {
-      return 1;
-    }
-  });
+console.log('==============================');
 
-  displayEmployees(employees);
+displayAverageSalary(employeesArray);   
+
+getRandomEmployee(employeesArray);
+
+employeesArray = employeesArray.concat(employees);
+console.log(employeesArray);
+
+  displayEmployees(employeesArray);
 }
 
 // Add event listener to 'Add Employees' button
